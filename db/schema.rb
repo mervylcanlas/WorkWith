@@ -10,10 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_25_163823) do
+ActiveRecord::Schema.define(version: 2021_09_01_115415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "application_reports", force: :cascade do |t|
+    t.integer "application_id"
+    t.string "details"
+    t.date "progress_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "applications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "job_id"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "added_by"
+    t.string "company"
+    t.string "link"
+    t.string "contact_email"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "project_features", force: :cascade do |t|
+    t.integer "project_id"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "tech"
+    t.integer "user_id"
+    t.string "github_link"
+    t.string "deploy_link"
+    t.string "image_link"
+    t.string "overview"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_infos", force: :cascade do |t|
+    t.string "f_name"
+    t.string "l_name"
+    t.integer "avion_batch"
+    t.string "avion_status"
+    t.string "github_id"
+    t.string "linkedin_link"
+    t.integer "work_years"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +81,7 @@ ActiveRecord::Schema.define(version: 2021_08_25_163823) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "account_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
