@@ -1,0 +1,60 @@
+<h1>New Article</h1>
+
+<%= form_with model: @project do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% @project.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :tech %><br>
+    <%= form.text_field :tech %><br>
+    <% @project.errors.full_messages_for(:tech).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :github_link %><br>
+    <%= form.text_field :github_link %><br>
+    <% @project.errors.full_messages_for(:github_link).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+    <div>
+    <%= form.label :deploy_link %><br>
+    <%= form.text_field :deploy_link %><br>
+    <% @project.errors.full_messages_for(:deploy_link).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+    <div>
+    <%= form.label :image_link %><br>
+    <%= form.text_field :image_link %><br>
+    <% @project.errors.full_messages_for(:image_link).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+    <div>
+    <%= form.label :overview %><br>
+    <%= form.text_area  :overview %><br>
+    <% @project.errors.full_messages_for(:overview).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+
+
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

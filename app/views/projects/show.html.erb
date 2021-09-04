@@ -1,0 +1,30 @@
+<h1><%= @project.title %></h1>
+
+<p><%= @project.overview %></p>
+<p><%= @project.tech %></p>
+<p><%= @project.github_link %></p>
+<p><%= @project.deploy_link %></p>
+<p><%= @project.image_link %></p>
+
+<%= link_to "Edit", edit_project_path(@project) %>
+<%= link_to "Destroy", project_path(@project),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+
+<h2>Features</h2>
+<% @project.project_features.each do |feature| %>
+  <p>
+    <%= feature.description %>
+  </p>
+<% end %>
+
+<h2>Add feature:</h2>
+<%= form_with model: [ @project, @project.project_features.build ] do |form| %>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </p>
+  <p>
+    <%= form.submit 'Add feature' %>
+  </p>
+<% end %>

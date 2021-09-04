@@ -7,4 +7,6 @@ class User < ApplicationRecord
     has_many :applications
     has_many :projects
     has_one :user_info
+
+    validates :username, presence: true, uniqueness: true
 end
