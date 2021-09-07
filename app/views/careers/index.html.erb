@@ -1,0 +1,8 @@
+<div class = 'container m-5'>
+    <h1>Applications</h1>
+    <% @applications.each do |a| %>
+        <%= a.job.company %>
+    <% end %>
+    <%= link_to "Add", new_job_path %>
+</div>
+

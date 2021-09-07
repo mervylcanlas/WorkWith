@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
   resources :careers
   get '/portfolio/:username', to: 'portfolio#index'
+  resources :jobs
+  resources :applications
 end
