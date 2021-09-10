@@ -1,0 +1,47 @@
+<div class='container mt-5'>
+
+<div class="py-5 text-center">  
+        <h2>Edit "<%= @project.title %>"</h2>
+</div>
+<%= form_tag project_path, method: 'PATCH' do %>
+
+        <div class="row g-3">
+
+            <div class="col-6">
+                <%= label_tag 'title', 'Project Title', class: 'form-label' %>
+                <%= text_field_tag 'title', @project.title, class: 'form-control', required: true %>
+            </div>
+            
+            <div class="col-6">
+                <%= label_tag 'tech', 'Tech', class: 'form-label' %>
+                <%= text_field_tag 'tech', @project.tech, class: 'form-control', required: true %>
+            </div>
+
+            <div class="col-4">
+                <%= label_tag 'github_link', 'Source Link', class: 'form-label' %>
+                <%= text_field_tag 'github_link', @project.github_link, class: 'form-control', required: true %>
+            </div>
+
+            <div class="col-4">
+                <%= label_tag 'deploy_link', 'Live Link', class: 'form-label' %>
+                <%= text_field_tag 'deploy_link', @project.deploy_link, class: 'form-control', required: true  %>
+            </div>
+
+            <div class="col-4">
+                <%= label_tag 'image_link', 'Image Link', class: 'form-label' %>
+                <%= text_field_tag 'image_link', @project.image_link, class: 'form-control', required: true  %>
+            </div>
+
+            <div class="col-6 text-center mt-5">
+                <%= link_to 'Back', :back, class: 'w-75 btn btn-primary btn-lg' %>
+            </div>
+
+            <div class="col-6 text-center mt-5">
+                <%= submit_tag 'Save', class: 'w-75 btn btn-success btn-lg' %>
+            </div>
+
+        </div>
+
+    <% end %>
+
+</div>

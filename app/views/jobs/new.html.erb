@@ -1,49 +1,53 @@
-<h1>New Job</h1>
+<div class='container mt-5'>
+
+    <div class="py-3 text-center">  
+        <h2>Create new Job</h2>
+    </div>
 
 <%= form_with model: @job do |form| %>
+    <div class="row g-3 mb-5">
+        <div class="col-6">
+            <%= form.label :company, class: 'form-label' %>
+            <%= form.text_field :company, class: 'form-control' %>
+            <% @job.errors.full_messages_for(:company).each do |message| %>
+                <div>
+                    <%= message %>
+                </div>
+            <% end %>
+        </div>
 
-    <div>
-        <%= form.label :company %><br>
-        <%= form.text_field :company %>
-        <% @job.errors.full_messages_for(:company).each do |message| %>
-            <div>
-                <%= message %>
-            </div>
-        <% end %>
+        <div class="col-6">
+            <%= form.label :title, class: 'form-label' %>
+            <%= form.text_field :title, class: 'form-control' %>
+            <% @job.errors.full_messages_for(:title).each do |message| %>
+                <div>
+                    <%= message %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="col-6">
+            <%= form.label :link, class: 'form-label' %>
+            <%= form.text_field :link, class: 'form-control' %>
+            <% @job.errors.full_messages_for(:link).each do |message| %>
+                <div>
+                    <%= message %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="col-6">
+            <%= form.label :contact_email, class: 'form-label' %>
+            <%= form.text_field :contact_email, class: 'form-control' %>
+            <% @job.errors.full_messages_for(:contact_email).each do |message| %>
+                <div>
+                    <%= message %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="col text-center mt-5">
+            <%= form.submit class: 'w-50 btn btn-success btn-lg' %>
+        </div>
     </div>
-
-    <div>
-        <%= form.label :link %><br>
-        <%= form.text_field :link %><br>
-        <% @job.errors.full_messages_for(:link).each do |message| %>
-            <div>
-                <%= message %>
-            </div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.label :contact_email %><br>
-        <%= form.text_field :contact_email %><br>
-        <% @job.errors.full_messages_for(:contact_email).each do |message| %>
-            <div>
-                <%= message %>
-            </div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %><br>
-        <% @job.errors.full_messages_for(:title).each do |message| %>
-            <div>
-                <%= message %>
-            </div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.submit %>
-    </div>
-
 <% end %>

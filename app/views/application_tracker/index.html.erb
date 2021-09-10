@@ -1,0 +1,30 @@
+<div class='container mt-5'>
+    <h1 class='py-3 text-center mb-5'>Application Tracker</h1>
+
+    <%= form_with method: :get do |form| %>
+        <div class="row g-3 mb-3">
+            <div class="col-11">
+                <%= select_tag(:student, options_for_select(@name_list),class: 'form-select', include_blank: "Select Student")  %>
+            </div>
+            <div class="col-1">
+                <%= form.submit "Search", class: 'btn btn-success w-100' %>
+            </div>
+        </div>
+    <% end %>
+
+    <% if @search_name %>
+        <p class='py-3 mb-5 lead text-center'>
+            Showing Results for <%= @search_name.f_name %> <%= @search_name.l_name %>
+        </p>
+    <% end %>
+
+    <% @applications.each do |a| %>
+        <div class='m-3 my-4'>
+            <h5 class=""><%= link_to a.job.company, a %></h5>
+            <p class="lead"><%= a.job.title %></p>
+        </div>
+    <% end %>
+
+    
+
+</div> 

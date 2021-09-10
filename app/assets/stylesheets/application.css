@@ -14,17 +14,9 @@
  *= require_self
  */
 
- main {
-     padding-top: 60px;
+ @import url(//db.onlinewebfonts.com/c/0040a449176463b90694900cda836411?family=AniBeatriceCursive);
+ @font-face {font-family: "AniBeatriceCursive"; src: url("//db.onlinewebfonts.com/t/0040a449176463b90694900cda836411.eot"); src: url("//db.onlinewebfonts.com/t/0040a449176463b90694900cda836411.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/0040a449176463b90694900cda836411.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/0040a449176463b90694900cda836411.woff") format("woff"), url("//db.onlinewebfonts.com/t/0040a449176463b90694900cda836411.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/0040a449176463b90694900cda836411.svg#AniBeatriceCursive") format("svg"); }
+ 
+ .navbar-brand {
+    font-family: "AniBeatriceCursive" !important;
  }
- .notice, .alert {
-    padding: 15px;
-    position: fixed;
-    z-index: 1;
-    top: 10%;
-    left: 50%;
-    width: 300px;
-    margin-left: -150px;
-    border-radius: 5px;
-    text-align: center;
-}

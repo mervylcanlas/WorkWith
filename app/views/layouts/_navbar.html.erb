@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
     <div class="container">
-        <a href="<%= root_path %>" class="navbar-brand">WorkWith!</a>
+        <a href="<%= root_path %>" class="navbar-brand">/workwith/</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <% if user_signed_in? && current_user.email != 'admin@admin.com' %>
+                <% if user_signed_in? %>
                     <% if current_user.account_type != 'admin' %>
                         <li class="nav-item">
                             <a href="<%= careers_path %>" class="nav-link">Careers</a>
@@ -14,40 +14,58 @@
                         <li class="nav-item">
                             <a href="/portfolio/<%= current_user.username %>" class="nav-link">myPortfolio</a>
                         </li>
-                    <% end %>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Account
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a href="<%= user_info_index_path %>" class="dropdown-item">Profile</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="/user_info/<%= current_user.id %>/edit"" class="dropdown-item">Profile</a>
+                                </li>   
+                                <li>
+                                    <a href="<%= projects_path %>" class="dropdown-item">Manage Portfolio</a>
+                                </li>
+                                <li>
+                                    <a href="<%= edit_user_registration_path %>" class="dropdown-item">Account Settings</a>
+                                </li>
+                                <li>
+                                    <a href="<%= destroy_user_session_path %>" data-method="delete" class="dropdown-item">Logout</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="<%= projects_path %>" class="dropdown-item">Manage Portfolio</a>
+                    <% else %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Careers
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="<%= jobs_path %>" class="dropdown-item">Jobs</a>
+                                </li>
+                                <li>
+                                    <a href="/application_tracker" class="dropdown-item">View Student Applications</a>
+                                </li>
+                                <li>
+                                    <a href="<%= new_application_path %>" class="dropdown-item">Create New Application</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="<%= edit_user_registration_path %>" class="dropdown-item">Account Settings</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">  
+                                <li>
+                                    <a href="<%= edit_user_registration_path %>" class="dropdown-item">Account Settings</a>
+                                </li>
+                                <li>
+                                    <a href="<%= destroy_user_session_path %>" data-method="delete" class="dropdown-item">Logout</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="<%= destroy_user_session_path %>" data-method="delete" class="dropdown-item">Logout</a>
-                        </li>
-                    </ul>
-                </li>
-                <% elsif user_signed_in? && current_user.email == 'admin@admin.com' %>
-                    <li class="nav-item">
-                        <a href="<%= admin_new_path %>" class="nav-link">Create Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<%= destroy_user_session_path %>" data-method="delete" class="nav-link">Logout</a>
-                    </li>
-                <% else %>
-                    <li class="nav-item mr-1">
-                        <a href="<%= new_user_session_path %>" class="nav-link">Login</a>
-                    </li>
-                    <li class="nav-item mr-1">
-                        <a href="<%= new_user_registration_path %>" class="nav-link">Register</a>
-                    </li>                    
+                        
+                    <% end %>                       
                 <% end %>
             </ul>
         </div>

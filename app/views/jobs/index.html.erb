@@ -1,0 +1,22 @@
+<div class='container'>
+    <div class='jobs-header m-5 text-center'>
+        <h1>Jobs</h1> 
+        <%= link_to "Create New Job", new_job_path, class: 'btn btn-success' %>
+    </div>
+    <% @jobs.each do |job| %>
+    <div class='my-4'>
+        <h5><%= link_to job.company, job_path(job) %></h5>
+        <%= job.title %>
+        <%= %>
+    </div>
+    <% end %>
+</div>
+
+<style>
+    .jobs-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

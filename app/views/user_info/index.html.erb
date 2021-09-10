@@ -1,7 +1,9 @@
-<% if @profile %>
-    <h1>First Name: <%= @profile.f_name %></h1>
-    <h1>Last Name: <%= @profile.l_name %></h1>
-    <h1>Batch: <%= @profile.avion_batch %></h1>
-    <h1>Github: <%= @profile.github_id %></h1>
-    <h1>LinkedIn: <%= @profile.linkedin_link %></h1>
-<% end %>
+<div class = "container">
+    <% if @profile %>
+        <h1>First Name: <%= @profile.f_name %></h1>
+        <h1>Last Name: <%= @profile.l_name %></h1>
+        <h1>Batch: <%= @profile.avion_batch %></h1>
+        <h1>Github: <%= @profile.github_id %></h1>
+        <h1>LinkedIn: <%= @profile.linkedin_link %></h1>
+    <% end %>
+</div>

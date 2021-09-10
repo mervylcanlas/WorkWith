@@ -1,8 +1,27 @@
-<div class = 'container m-5'>
-    <h1>Applications</h1>
+<div class='container mt-5'>
+    <div class='application_header'>
+        <div class="text-center my-4">  
+            <h2>Applications</h2>
+        </div>
+        <div class="text-center my-4">  
+            <%= link_to "Create New Application", new_job_path, class: 'btn btn-success' %>
+        </div>
+    </div>
+
     <% @applications.each do |a| %>
-        <%= a.job.company %>
+        <div class='m-3 my-4'>
+            <h5 class=""><%= link_to a.job.company, a %></h5>
+            <p class="lead"><%= a.job.title %></p>
+        </div>
     <% end %>
-    <%= link_to "Add", new_job_path %>
+    
 </div>
 
+<style>
+    .application_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

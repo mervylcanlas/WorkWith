@@ -1,4 +1,4 @@
-<section class="py-5 text-center container">
+<section class="py-5 text-center container mt-5">
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light"><%= @profile.f_name %> <%= @profile.l_name %></h1>
@@ -6,45 +6,51 @@
                 Short introduction about the student
             </p>
             <p>
-                <a href="#" class="btn btn-primary my-2">Github Link</a>
-                <a href="#" class="btn btn-secondary my-2">LinkedIn Link</a>
+                <a href="<%= @profile.github_id %>" class="btn btn-primary my-2" target="_blank">Github Link</a>
+                <a href="<%= @profile.linkedin_link %>" class="btn btn-secondary my-2" target="_blank">LinkedIn Link</a>
             </p>
         </div>
     </div>
 </section>
 
-<div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <% @projects.each do |project| %>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: صورة مصغرة" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"/>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                                <%= project.title %>
-                            </text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">Project Summary Here</p>
-                                <% project.project_features.each do |feature| %>
-                                    <li>
-                                        <i><%= feature.description %></i>
-                                    </li>
-                                <% end %>
-                            <br/>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Live Link</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Github Link</button>
-                                </div>
-                                <small class="text-muted">Date</small>
-                            </div>
-                        </div>
-                    </div>
+<div class="b-example-divider"></div>
+
+<% @projects.each do |project| %>    
+    <div class="container mb-5">
+        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+            <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                <h1 class="display-6 lh-1"><%= project.title %></h1>
+                <p class="lead"><%= project.overview %></p>
+                <ul class="list-group list-group-flush mb-5">
+                    <% project.project_features.each do |feature| %>
+                        <li class="list-group-item">
+                            <%= feature.description %>
+                        </li>
+                    <% end %>
+                </ul>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Live Link</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Source Link</button>
                 </div>
-            <% end %>
+            </div>
+            <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+                <img class="rounded-lg-3" src="https://getbootstrap.com/docs/5.0/examples/heroes/bootstrap-docs.png" alt="" width="720">
+            </div>
         </div>
     </div>
-</div>
+    <div class="b-example-divider"></div>
+<%end %>
+
+<style>
+    .b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    @media (min-width: 992px) {
+    .rounded-lg-3 { border-radius: .3rem; }
+    }
+</style>

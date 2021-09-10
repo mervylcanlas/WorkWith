@@ -1,0 +1,71 @@
+<div class = 'container'>
+    <div class = 'm-5'>
+        <div class="py-3 text-center">  
+            <h2><%= @application.job.company %></h2>
+        </div>
+
+        <%= form_tag do %>
+        <div class="row g-3 mb-5">
+
+            <div class="col-10">
+                <%= label_tag 'title', 'Title', class: 'form-label' %>
+                <%= text_field_tag 'title', @application.job.title, class: 'form-control', required: true, readonly: true  %>
+            </div>
+
+            <div class="col-2">
+                <%= label_tag 'status', 'Status', class: 'form-label' %>
+                <%= text_field_tag 'status', @application.status, class: 'form-control', required: true, readonly: true %>
+            </div>
+            
+            <div class="col-6">
+                <%= label_tag 'link', 'Post Link', class: 'form-label' %>
+                <%= text_field_tag 'link', @application.job.link , class: 'form-control', required: true, readonly: true %>
+            </div>
+
+            <div class="col-6">
+                <%= label_tag 'contact_email', 'Contact', class: 'form-label' %>
+                <%= text_field_tag 'contact_email', @application.job.contact_email, class: 'form-control', required: true, readonly: true %>
+            </div>
+
+        </div>
+    <% end %>
+
+    <hr class="my-4">
+        <div class="py-3 text-center">  
+            <h2>Progress Reports</h2>
+        </div>
+
+
+        <%= form_tag do %>
+            <div class="row g-3 mb-5">
+                <% @application.application_reports.each do |report| %>
+                    <div class="col-2">
+                        <%= date_field_tag 'progress_date', report.progress_date, class: 'form-control mb-3 text-center', required: true, readonly: true  %>
+                    </div>
+                    <div class="col-10">
+                        <%= text_field_tag 'details', report.details, class: 'form-control mb-3', required: true, readonly: true  %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+
+        <%= form_with model: [ @application, @application.application_reports.build ] do |form| %>
+            <div class="row g-3 mb-5">
+                
+                <div class="col-2">
+                    <%= form.date_field :progress_date, class: 'form-control' %>
+                </div>
+
+                <div class="col-8">
+                    <%= form.text_field :details, class: 'form-control' %>
+                </div>
+
+                <div class="col-2 text-center">
+                    <%= form.submit 'Add Progress', class: 'w-100 btn btn-primary' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+

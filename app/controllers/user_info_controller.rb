@@ -8,12 +8,26 @@ class UserInfoController < ApplicationController
         @user_info = UserInfo.new
     end
 
+    def edit
+        @profile =  UserInfo.find_by(user_id: params[:id])
+    end
+
     def create
         @user_info = UserInfo.new(profile_params.merge(user_id: current_user.id))
         if @user_info.save
             redirect_to users_path
         else
             render :new
+        end
+    end
+
+    def update
+        @user_info = UserInfo.find_by(user_id: params[:id])
+    
+        if @user_info.update(profile_params)
+          redirect_to users_path
+        else
+          render :edit
         end
     end
 

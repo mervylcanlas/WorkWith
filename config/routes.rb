@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :careers
   get '/portfolio/:username', to: 'portfolio#index'
   resources :jobs
-  resources :applications
+  resources :applications do
+    resources :application_reports
+  end
+  get '/application_tracker', to: 'application_tracker#index'
 end

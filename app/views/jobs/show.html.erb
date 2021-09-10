@@ -1,0 +1,33 @@
+<div class = 'container'>
+    <div class = 'm-5'>
+        <div class="py-3 text-center">  
+            <h2><%= @job.company %></h2>
+        </div>
+
+        <%= form_tag do %>
+        <div class="row g-3 mb-5">
+
+            <div class="col-10">
+                <%= label_tag 'title', 'Title', class: 'form-label' %>
+                <%= text_field_tag 'title', @job.title, class: 'form-control', required: true, readonly: true  %>
+            </div>
+
+            <div class="col-2">
+                <%= label_tag 'added_by', 'Created by', class: 'form-label' %>
+                <%= text_field_tag 'added_by', @job.added_by, class: 'form-control', required: true, readonly: true %>
+            </div>
+            
+            <div class="col-6">
+                <%= label_tag 'link', 'Post Link', class: 'form-label' %>
+                <%= text_field_tag 'link', @job.link , class: 'form-control', required: true, readonly: true %>
+            </div>
+
+            <div class="col-6">
+                <%= label_tag 'contact_email', 'Contact', class: 'form-label' %>
+                <%= text_field_tag 'contact_email', @job.contact_email, class: 'form-control', required: true, readonly: true %>
+            </div>
+
+        </div>
+        <% end %>
+    </div>
+</div>

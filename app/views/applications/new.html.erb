@@ -1,0 +1,19 @@
+<div class='container mt-5'>
+
+    <div class="py-3 text-center">  
+        <h2>Assign Job Application</h2>
+    </div>
+
+<%= form_with model: @application do |form| %>
+    <div class="row g-3 mb-5">
+        <div class="col-5">
+            <%= select_tag(:job_id, options_for_select(@job_list), class: 'form-select', include_blank: "Select Job to assign") %>
+        </div>
+        <div class="col-5">
+            <%= select_tag(:user_id, options_for_select(@name_list), class: 'form-select', include_blank: "Select Student") %>
+        </div>
+        <div class="col-2">
+            <%= form.submit "Search", class: 'btn btn-success w-100' %>
+        </div>
+    </div>
+<% end %>
