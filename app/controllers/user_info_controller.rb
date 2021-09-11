@@ -10,6 +10,9 @@ class UserInfoController < ApplicationController
 
     def edit
         @profile =  UserInfo.find_by(user_id: params[:id])
+
+        @image_list = get_images
+
     end
 
     def create
@@ -34,6 +37,17 @@ class UserInfoController < ApplicationController
     private
 
     def profile_params
-      params.permit(:f_name, :l_name, :avion_batch, :github_id, :linkedin_link)
+      params.permit(:f_name, :l_name, :avion_batch, :github_id, :linkedin_link, :portfolio_img, :intro)
+    end
+
+    def get_images
+        search_results = Unsplash::Photo.search(query = 'minimal', orientation = 'landscape')
+        image_links = []
+
+        search_results.each do |s|
+            image_links.push(s.urls.full)
+        end
+        
+        return image_links
     end
 end
