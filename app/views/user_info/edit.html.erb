@@ -1,42 +1,51 @@
 <div class = "container">
-    <div class="py-5 text-center">  
-        <h2>Edit Profile</h2>
+  <div class="py-5 text-center">
+    <h2>Edit Profile</h2>
+  </div>
+  <%= form_tag user_info_path, method: 'PATCH' do %>
+    <div class="row g-3">
+      <div class="col-sm-5">
+        <%= label_tag 'f_name', 'First Name', class: 'form-label' %>
+        <%= text_field_tag 'f_name', @profile.f_name, class: 'form-control', required: true %>
+      </div>
+      <div class="col-sm-5">
+        <%= label_tag 'l_name', 'Last Name', class: 'form-label' %>
+        <%= text_field_tag 'l_name', @profile.l_name, class: 'form-control', required: true %>
+      </div>
+      <div class="col-sm-2">
+        <%= label_tag 'avion_batch', 'Batch #', class: 'form-label' %>
+        <%= number_field_tag 'avion_batch', @profile.avion_batch, class: 'form-control', required: true %>
+      </div>
+      <div class="col-6">
+        <%= label_tag 'github_id', 'Github', class: 'form-label' %>
+        <%= text_field_tag 'github_id', @profile.github_id, class: 'form-control', required: true  %>
+      </div>
+      <div class="col-6">
+        <%= label_tag 'linkedin_link', 'LinkedIn', class: 'form-label' %>
+        <%= text_field_tag 'linkedin_link', @profile.linkedin_link, class: 'form-control', required: true  %>
+      </div>
+      <div class="col-6">
+        <%= label_tag 'portfolio_img', 'Cover Image', class: 'form-label' %>
+        <%= text_field_tag 'portfolio_img', @profile.portfolio_img, class: 'form-control', required: true  %>
+      </div>
+      <div class="col-6">
+        <%= label_tag 'intro', 'Introduction', class: 'form-label' %>
+        <%= text_field_tag 'intro', @profile.intro, class: 'form-control', required: true  %>
+      </div>
+      <div class="col text-center mt-5">
+        <%= submit_tag 'Save', class: 'w-50 btn btn-primary btn-lg' %>
+      </div>
     </div>
-
-    <%= form_tag user_info_path, method: 'PATCH' do %>
-
-        <div class="row g-3">
-
-            <div class="col-sm-5">
-                <%= label_tag 'f_name', 'First Name', class: 'form-label' %>
-                <%= text_field_tag 'f_name', @profile.f_name, class: 'form-control', required: true %>
-            </div>
-            
-            <div class="col-sm-5">
-                <%= label_tag 'l_name', 'Last Name', class: 'form-label' %>
-                <%= text_field_tag 'l_name', @profile.l_name, class: 'form-control', required: true %>
-            </div>
-
-            <div class="col-sm-2">
-                <%= label_tag 'avion_batch', 'Batch #', class: 'form-label' %>
-                <%= number_field_tag 'avion_batch', @profile.avion_batch, class: 'form-control', required: true %>
-            </div>
-
-            <div class="col-12">
-                <%= label_tag 'github_id', 'Github', class: 'form-label' %>
-                <%= text_field_tag 'github_id', @profile.github_id, class: 'form-control', required: true  %>
-            </div>
-
-            <div class="col-12">
-                <%= label_tag 'linkedin_link', 'LinkedIn', class: 'form-label' %>
-                <%= text_field_tag 'linkedin_link', @profile.linkedin_link, class: 'form-control', required: true  %>
-            </div>
-            
-            <div class="col text-center mt-5">
-                <%= submit_tag 'Save', class: 'w-50 btn btn-primary btn-lg' %>
-            </div>
-
-        </div>
-
-    <% end %>
+  <% end %>
+  <% @image_list.each do |i| %>
+    <div class = 'sample_image container text-center my-5'>
+      <img src='<%= i %>' height='200px' class='mb-3'>
+      <%= text_field_tag 'img_link', i, class: 'form-control' %>
+    </div>
+  <% end %>
 </div>
+<style>
+  .sample_image{
+      object-fit: cover;
+  }
+</style>
