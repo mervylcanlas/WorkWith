@@ -8,6 +8,7 @@ class ApplicationTrackerController < ApplicationController
         @search_name = UserInfo.find_by(user_id: select_params[:student])
         @applications = Application.includes(:application_reports, :job).where(user_id: select_params[:student])
         @student_id = select_params[:student]
+        @user_infos = UserInfo.all
     end
 
     private

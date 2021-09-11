@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :application_reports
   end
   get '/application_tracker', to: 'application_tracker#index'
+  resources :accounts
 end
